@@ -2,6 +2,11 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.4.
 
+- Angular CLI: 20.1.4
+- Node: 22.12.0
+- Package Manager: npm 10.9.0
+- OS: win32 x64
+
 ## Development server
 
 To start a local development server, run:
