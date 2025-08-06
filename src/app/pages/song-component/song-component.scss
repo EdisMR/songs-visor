@@ -1,0 +1,305 @@
+:root {
+	--ft-size: 18px;
+}
+
+h1 {
+	font-size: 20px;
+}
+
+#transpositionButtons {
+	font-size: 16px;
+}
+
+#songControlButtons {
+	white-space: nowrap;
+}
+
+#songMaximizationArea {
+	min-height: 60vh;
+}
+
+#songMaximizationArea:fullscreen {
+	overflow-x: auto;
+	scrollbar-width: thin;
+	background-color: #000;
+	position: relative;
+	user-select: none;
+}
+
+#songMaximizationArea:fullscreen #songText-processed {
+	background-color: #000;
+	font-weight: bold;
+	padding: 0 2px 0 2px;
+}
+
+#songMaximizationArea:fullscreen #closeFullscreen {
+	display: block;
+}
+
+#closeFullscreen {
+	display: none;
+	position: fixed;
+	top: 0;
+	right: 0;
+	z-index: 1000;
+	zoom: .8;
+}
+
+#songText-processed {
+	width: fit-content;
+	color: #cbf0ff;
+	font-family: 'Martian Mono', "Roboto Mono", monospace;
+}
+
+.chord {
+	color: #d6f0ff;
+	font-weight: bold;
+}
+
+#otherSongsLinks {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 15px;
+	margin-top: 60px;
+	margin-bottom: 0px;
+	font-family: 'Martian Mono', "Roboto Mono", monospace;
+}
+
+
+
+
+@media (orientation: portrait) and (width < 300px) {
+	:root {
+		--ft-size: 14px;
+	}
+
+	body {
+		padding: 0;
+		margin: 0;
+	}
+
+	pre {
+		background-color: transparent;
+		padding: 0;
+		margin: 0;
+	}
+
+	h1 {
+		font-size: 15px;
+	}
+
+	#transpositionButtons {
+		font-size: 15px;
+	}
+}
+
+@media (orientation:portrait) and (width <400px) {
+	#transpositionButtons {
+		margin-top: 10px
+	}
+}
+
+@media (orientation: portrait) and (300px <=width <=400px) {
+
+	/* CEL */
+	:root {
+		--ft-size: 17px;
+	}
+
+	body {
+		padding: 5px;
+		margin: 0;
+	}
+
+	pre {
+		background-color: transparent;
+		padding: 0;
+		margin: 0;
+	}
+
+	h1 {
+		font-size: 19px;
+	}
+
+	#transpositionButtons {
+		font-size: 17px;
+	}
+
+	#songText-processed {
+		font-size: 13px;
+	}
+
+	#songMaximizationArea:fullscreen {
+		padding: 3px;
+	}
+}
+
+@media (orientation: portrait) and (400px <=width <=600px) {
+	:root {
+		--ft-size: 14px;
+	}
+
+	body {
+		padding: 3px;
+		margin: 0;
+	}
+
+	pre {
+		background-color: transparent;
+		padding: 0;
+		margin: 0;
+	}
+
+	h1 {
+		font-size: 16px;
+	}
+
+	#songText-processed {
+		font-size: 16px;
+	}
+
+	#songMaximizationArea:fullscreen {
+		padding: 3px;
+	}
+}
+
+@media (orientation: portrait) and (600px <=width <=675px) {
+
+	/* Tablet */
+	:root {
+		--ft-size: 14px;
+	}
+
+	body {
+		padding: 3px;
+		margin: 0px;
+	}
+
+	h1 {
+		font-size: 16px;
+	}
+
+	#songText-processed {
+		font-size: 16px;
+	}
+
+	#songMaximizationArea:fullscreen {
+		padding: 3px;
+	}
+}
+
+@media (orientation: portrait) and (width> 675px) {
+	:root {
+		--ft-size: 13px;
+	}
+
+	h1 {
+		font-size: 16px;
+	}
+
+	#songText-processed {
+		font-size: 15px;
+	}
+
+	#transpositionButtons {
+		font-size: 15px;
+	}
+}
+
+@media (orientation: portrait) and (width > 700px) {
+	:root {
+		--ft-size: 15px;
+	}
+
+	h1 {
+		font-size: 17px;
+	}
+
+	#songText-processed {
+		font-size: 19px;
+	}
+
+	#transpositionButtons {
+		font-size: 17px;
+	}
+}
+
+
+
+
+
+
+
+@media (orientation: landscape) and (width < 820px) {
+	:root {
+		--ft-size: 16px;
+	}
+
+	h1 {
+		font-size: 18px;
+	}
+}
+
+@media (orientation: landscape) and (820px <=width <=870px) {
+
+	/* CEL */
+	:root {
+		--ft-size: 16px;
+	}
+
+	h1 {
+		font-size: 20px;
+	}
+
+	#songText-processed {
+		font-size: 13px;
+	}
+}
+
+@media (orientation: landscape) and (870px <=width <=970px) {
+
+	:root {
+		--ft-size: 14px;
+	}
+
+	h1 {
+		font-size: 19px;
+	}
+
+	#songText-processed {
+		font-size: 14px;
+	}
+}
+
+@media (orientation: landscape) and (width > 970px) {
+
+	/* tablet */
+	:root {
+		--ft-size: 14px;
+	}
+
+	h1 {
+		font-size: 16px;
+	}
+
+	#songText-processed {
+		font-size: 16px;
+	}
+}
+
+@media (orientation: landscape) and (width > 1300px) {
+	/* tablet */
+	:root {
+		--ft-size: 15px;
+	}
+
+	h1 {
+		font-size: 17px;
+	}
+
+	#songText-processed {
+		font-size: 18px;
+	}
+}

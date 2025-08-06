@@ -1,1 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+html {
+	user-select: none;
+	font-size: var(--ft-size);
+}
+
+*::-webkit-scrollbar {
+	width: 0px;
+	background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+	width: 0px;
+	background-color: transparent;
+	color: transparent;
+}
+
+.category-chip {
+	border-radius: var(--bd-radius);
+	cursor: pointer;
+}
+
+input {
+	user-select: text;
+}
+
+footer {
+	margin-top: 100px;
+	margin-bottom: 25px;
+}

@@ -16,7 +16,7 @@
 			<legend>Filtrar categorías</legend>
 			<div class="flex wrap" id="categories-list-container">
 				@for(category of categories; track category.uniqueId){
-					<span class="category-chip fg-accent p-.25 m-.5">Category name</span>
+				<span class="category-chip fg-accent p-.25 m-.5">Category name</span>
 				}
 			</div>
 		</fieldset>
@@ -24,6 +24,9 @@
 </section>
 <section>
 	<ul id="filteredSongsListContainer">
+		@if(songs.length == 0){
+		<li>No hay resultados</li>
+		}
 		@for(song of songs; track song.uniqueId){
 		<li>
 			<a [routerLink]="['','song', 'id']">

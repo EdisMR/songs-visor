@@ -1,0 +1,22 @@
+:root {
+			--ft-size: 10px;
+		}
+
+		h1 {
+			font-size: 17px;
+		}
+
+		#debugInfo {
+			white-space: pre-wrap;
+			font-family: "Martian Mono", monospace;
+			color: #5abdeb;
+			font-size: 12px;
+		}
+
+		body {
+			margin-bottom: 50px;
+		}
+
+		pre {
+			user-select: text;
+		}

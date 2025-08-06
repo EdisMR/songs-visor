@@ -1,0 +1,182 @@
+
+
+
+
+#filteredSongsListContainer {
+	list-style-type: none;
+	padding: 0px;
+}
+
+#filteredSongsListContainer li {
+	padding: 0px;
+	margin-top: 10px;
+}
+
+
+
+
+@media (orientation: portrait) and (width < 300px) {
+	:root {
+		--ft-size: 14px;
+	}
+
+	h1 {
+		font-size: 15px;
+	}
+
+	body {
+		padding: 0;
+		margin: 0;
+	}
+
+	form,
+	fieldset {
+		padding: 0;
+		padding-top: 20px;
+	}
+}
+
+
+@media (orientation: portrait) and (300px <=width <=399px) {
+	:root {
+		--ft-size: 17px;
+	}
+
+	h1 {
+		font-size: 22px;
+	}
+
+	body {
+		padding: 0px;
+		padding-left: 10px;
+		padding-right: 10px;
+		margin: 0;
+	}
+
+	form,
+	fieldset {
+		padding: 0;
+		padding-top: 20px;
+	}
+}
+
+@media (orientation: portrait) and (400px <=width <=599px) {
+	:root {
+		--ft-size: 15px;
+	}
+
+	h1 {
+		font-size: 19px;
+	}
+
+	body {
+		padding: 0;
+		margin: 0;
+	}
+
+	form,
+	fieldset {
+		padding: 0;
+		padding-top: 20px;
+	}
+}
+
+@media (orientation: portrait) and (600px <=width <=750px) {
+	:root {
+		--ft-size: 14px;
+	}
+
+	h1 {
+		font-size: 16px;
+	}
+
+	#filteredSongsListContainer {
+		column-count: 2;
+	}
+
+	body {
+		padding: 10px;
+		margin: 0;
+	}
+}
+
+@media (orientation: portrait) and (width>750px) {
+	:root {
+		--ft-size: 15px;
+	}
+
+	h1 {
+		font-size: 18px;
+	}
+
+	#filteredSongsListContainer {
+		column-count: 3;
+	}
+}
+
+
+
+
+
+
+
+
+
+@media (orientation: landscape) and (width < 820px) {
+	:root {
+		--ft-size: 16px;
+	}
+
+	h1 {
+		font-size: 20px;
+	}
+
+	#filteredSongsListContainer {
+		column-count: 2;
+	}
+}
+
+@media (orientation: landscape) and (820px <=width <=870px) {
+	:root {
+		--ft-size: 18px;
+	}
+
+	h1 {
+		font-size: 22px;
+	}
+
+	#filteredSongsListContainer {
+		column-count: 2;
+	}
+}
+
+
+@media (orientation: landscape) and (870px <=width <=970px) {
+	:root {
+		--ft-size: 14px;
+	}
+
+	h1 {
+		font-size: 18px;
+	}
+
+	#filteredSongsListContainer {
+		column-count: 3;
+		font-size: 16px;
+	}
+}
+
+
+@media (orientation: landscape) and (width > 970px) {
+	:root {
+		--ft-size: 14px;
+	}
+
+	h1 {
+		font-size: 22px;
+	}
+
+	#filteredSongsListContainer {
+		column-count: 3;
+	}
+}
