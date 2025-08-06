@@ -1,1 +1,53 @@
-<p>song-component works!</p>
+<div class="flex space-between wrap" id="songControlButtons">
+	<div>
+		<button>
+			<a [routerLink]="['']">Inicio</a>
+		</button>
+	</div>
+	<div>
+		<button onclick="maximizeSongText()">&#x2927; Maximizar</button>
+	</div>
+	<div class="flex nowrap" id="transpositionButtons">
+		<button onclick="transposedSong(10)">-1</button>
+		<button onclick="transposedSong(11)">-&#189;</button>
+		<button onclick="resetSong()">0</button>
+		<button onclick="transposedSong(1)">+&#189;</button>
+		<button onclick="transposedSong(2)">+1</button>
+	</div>
+</div>
+
+<section>
+	<h1>{{song.shortId}} - {{song.name}}</h1>
+
+</section>
+<section id="songMaximizationArea">
+	<button type="button" id="closeFullscreen" class="fg-accent">×</button>
+	<pre id="songText-processed">
+			{{songTextProcessed}}
+		</pre>
+</section>
+
+<section class="categories">
+	<p>categorias: {{categoriesProcessed}}</p>
+</section>
+
+<section>
+	<strong>Enlaces relacionados</strong>
+	<ul>
+		@if(relatedLinksProcessed.length == 0){
+		<li>-- No hay enlaces relacionados. --</li>
+		} @else {
+		@for(link of relatedLinksProcessed;track link){
+		<li>
+			<a href="link" target="_blank" rel="noopener noreferrer">{{link}}</a>
+		</li>
+		}
+		}
+	</ul>
+</section>
+
+<section id="otherSongsLinks">
+	@for(song of songsLinks;track song){
+		<a [routerLink]="['','song','']" class="other-song-link">0001</a>
+	}
+</section>
