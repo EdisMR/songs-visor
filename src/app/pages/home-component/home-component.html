@@ -1,1 +1,35 @@
-<p>home-component works!</p>
+<section>
+	<h1>Gran Cancionero</h1>
+</section>
+<section>
+	<form onsubmit="event.preventDefault()">
+		<fieldset>
+			<legend>Buscar un canto:</legend>
+			<input type="text" id="songSearchInput" name="cancion" placeholder="Nombre de la canción" autocomplete="off"
+				maxlength="50" autofocus>
+		</fieldset>
+	</form>
+</section>
+<section>
+	<form onsubmit="event.preventDefault()">
+		<fieldset>
+			<legend>Filtrar categorías</legend>
+			<div class="flex wrap" id="categories-list-container">
+				@for(category of categories; track category.uniqueId){
+					<span class="category-chip fg-accent p-.25 m-.5">Category name</span>
+				}
+			</div>
+		</fieldset>
+	</form>
+</section>
+<section>
+	<ul id="filteredSongsListContainer">
+		@for(song of songs; track song.uniqueId){
+		<li>
+			<a [routerLink]="['','song', 'id']">
+				{{song.shortId}} - {{song.name}}
+			</a>
+		</li>
+		}
+	</ul>
+</section>
