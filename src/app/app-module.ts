@@ -7,6 +7,8 @@ import { HomeComponent } from './pages/home-component/home-component';
 import { SongComponent } from './pages/song-component/song-component';
 import { DebugComponent } from './pages/debug-component/debug-component';
 import { FooterComponent } from './components/footer-component/footer-component';
+import { ProcessedSongTextPipe } from './pipes/processed-song-text-pipe';
+import { ProcessedCategoriesTextPipe } from './pipes/processed-categories-text-pipe';
 
 @NgModule({
   declarations: [
@@ -15,6 +17,8 @@ import { FooterComponent } from './components/footer-component/footer-component'
     SongComponent,
     DebugComponent,
     FooterComponent,
+    ProcessedSongTextPipe,
+    ProcessedCategoriesTextPipe,
   ],
   imports: [
     BrowserModule,

@@ -30,7 +30,7 @@
 		}
 		@for(song of songs; track song.uniqueId){
 		<li>
-			<a [routerLink]="['','song', 'id']">
+			<a [routerLink]="['','song', song.shortId]">
 				{{song.shortId}} - {{song.name}}
 			</a>
 		</li>

@@ -94,6 +94,31 @@ export class DbSongsService {
       const store = transaction.objectStore('songs');
       const request = store.get(id);
 
+
+      request.onsuccess = (event: Event) => {
+        console.log('Song retrieved successfully:', (event.target as IDBRequest).result);
+        resolve((event.target as IDBRequest).result);
+      };
+
+      request.onerror = (event: Event) => {
+        console.error('⚠️ Error retrieving song:', (event.target as IDBRequest).error);
+        window.alert('Error al recuperar el canto');
+        reject((event.target as IDBRequest).error);
+      };
+    });
+  }
+
+  public getByshortId(shortId: string): Promise<SongInterface> {
+    return new Promise((resolve, reject) => {
+      if (!this.db) {
+        reject('⚠️ Database is not initialized');
+        return;
+      }
+
+      const transaction = this.db.transaction('songs', 'readonly');
+      const store = transaction.objectStore('songs');
+      const request = store.index('shortId').get(shortId);
+
       request.onsuccess = (event: Event) => {
         console.log('Song retrieved successfully:', (event.target as IDBRequest).result);
         resolve((event.target as IDBRequest).result);
