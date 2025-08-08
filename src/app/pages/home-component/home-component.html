@@ -6,7 +6,7 @@
 		<fieldset>
 			<legend>Buscar un canto:</legend>
 			<input type="text" id="songSearchInput" name="cancion" placeholder="Nombre de la canción" autocomplete="off"
-				maxlength="50" autofocus>
+				maxlength="50" autofocus (input)="searchSong($event)">
 		</fieldset>
 	</form>
 </section>
@@ -15,8 +15,9 @@
 		<fieldset>
 			<legend>Filtrar categorías</legend>
 			<div class="flex wrap" id="categories-list-container">
+				<span class="category-chip fg-accent p-.25 m-.5" (click)="filterByCategory('all')">Mostrar todo</span>
 				@for(category of categories; track category.uniqueId){
-				<span class="category-chip fg-accent p-.25 m-.5">Category name</span>
+				<span class="category-chip fg-accent p-.25 m-.5" (click)="filterByCategory(category.uniqueId)">{{category.name}}</span>
 				}
 			</div>
 		</fieldset>
@@ -35,4 +36,16 @@
 		</li>
 		}
 	</ul>
+</section>
+
+<section class="btn-db-actions">
+	<details>
+		<summary>
+			<span>Acciones en base de datos</span>
+		</summary>
+		<div class="btn-collection">
+			<button class="btn-db-action" (click)="importData()">Importar datos</button>
+			<button class="btn-db-action" (click)="clearDatabase()">Borrar datos</button>
+		</div>
+	</details>
 </section>

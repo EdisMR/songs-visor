@@ -4,7 +4,6 @@ import { JsonFileInterface } from '../interface/json-file-interface';
 import { SongInterface } from '../interface/song-interface';
 import { DbCategoriesService } from './db-categories.service';
 import { DbSongsService } from './db-songs.service';
-import { Logger } from './logger';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +12,6 @@ export class CommonService {
   constructor(
     private _dbSongsSvc: DbSongsService,
     private _dbCategoriesSvc: DbCategoriesService,
-    private _logger:Logger
   ) {
   }
 
@@ -54,7 +52,6 @@ export class CommonService {
           reader.onload = (event: ProgressEvent<FileReader>) => {
             const result = event.target?.result;
             if (typeof result !== 'string') {
-              this._logger.log('File content is not a string'+result);
               reject(new Error('File content is not a string'));
               return;
             }
@@ -62,19 +59,16 @@ export class CommonService {
               const jsonData = JSON.parse(result) as JsonFileInterface;
               resolve(jsonData);
             } catch {
-              this._logger.log('Error parsing JSON file');
               reject(new Error('Error parsing JSON file'));
             }
           };
 
           reader.onerror = () => {
-            this._logger.log('Error reading file');
             reject(new Error('Error reading file'));
           };
 
           reader.readAsText(file);
         } else {
-          this._logger.log('No file selected');
           reject(new Error('No file selected'));
         }
       };
@@ -85,7 +79,6 @@ export class CommonService {
   importDatabaseFromJSONData(jsonData: JsonFileInterface): Promise<void> {
     return new Promise((resolve, reject) => {
       if (!jsonData || !jsonData.songs || !jsonData.categories) {
-        this._logger.log('Invalid JSON data');
         reject(new Error('Invalid JSON data'));
         return;
       }

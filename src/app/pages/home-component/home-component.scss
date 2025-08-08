@@ -1,10 +1,7 @@
-
-
-
-
 #filteredSongsListContainer {
 	list-style-type: none;
 	padding: 0px;
+	min-height: 150px;
 }
 
 #filteredSongsListContainer li {
@@ -12,8 +9,16 @@
 	margin-top: 10px;
 }
 
+.category-chip {
+	border-radius: 60px;
+	padding-left: 8px;
+	padding-right: 8px;
+	cursor: pointer;
+}
 
-
+.btn-db-actions{
+	margin-top: 100px;
+}
 
 @media (orientation: portrait) and (width < 300px) {
 	:root {

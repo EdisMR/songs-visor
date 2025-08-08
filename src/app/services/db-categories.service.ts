@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
 import { CategoryInterface } from '../interface/category-interface';
-import { Logger } from './logger';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DbCategoriesService {
   constructor(
-    private readonly _logger: Logger
   ) {
     this.openDatabase();
   }
@@ -31,13 +29,11 @@ export class DbCategoriesService {
 
       request.onsuccess = (event: Event) => {
         console.log('Database opened successfully:', this.dbName);
-        this._logger.log('Database opened successfully: ' + this.dbName);
         this.db = (event.target as IDBOpenDBRequest).result;
         resolve();
       };
 
       request.onerror = (event: Event) => {
-        this._logger.log('⚠️ Database error: ' + (event.target as IDBOpenDBRequest).error);
         console.error('Database error:', (event.target as IDBOpenDBRequest).error);
         window.alert('Error al abrir la base de datos de categorías');
         this.db = null;
@@ -49,7 +45,6 @@ export class DbCategoriesService {
   public addCategory(name: string): Promise<CategoryInterface> {
     return new Promise((resolve, reject) => {
       if (!this.db) {
-        this._logger.log('⚠️ Database is not initialized');
         reject('⚠️ Database is not initialized');
         return;
       }
@@ -66,14 +61,12 @@ export class DbCategoriesService {
       const request = store.add(categoryData);
 
       request.onsuccess = () => {
-        this._logger.log('✅ Category added successfully: ' + categoryData.uniqueId+' - '+categoryData.name);
         console.log('Category added successfully:', categoryData);
         window.alert('Categoría añadida correctamente');
         resolve(categoryData);
       };
 
       request.onerror = (event: Event) => {
-        this._logger.log('Error adding category: ' + (event.target as IDBRequest).error);
         console.error('Error adding category:', (event.target as IDBRequest).error);
         window.alert('Error al añadir la categoría');
         reject((event.target as IDBRequest).error);
@@ -84,7 +77,6 @@ export class DbCategoriesService {
   public getCategory(uniqueId: string): Promise<CategoryInterface | null> {
     return new Promise((resolve, reject) => {
       if (!this.db) {
-        this._logger.log('⚠️ Database is not initialized');
         reject('⚠️ Database is not initialized');
         return;
       }
@@ -98,7 +90,6 @@ export class DbCategoriesService {
       };
 
       request.onerror = (event: Event) => {
-        this._logger.log('Error retrieving category: ' + (event.target as IDBRequest).error);
         console.error('Error retrieving category:', (event.target as IDBRequest).error);
         window.alert('Error al recuperar la categoría');
         reject((event.target as IDBRequest).error);
@@ -109,7 +100,6 @@ export class DbCategoriesService {
   public getAllCategories(): Promise<CategoryInterface[]> {
     return new Promise((resolve, reject) => {
       if (!this.db) {
-        this._logger.log('⚠️ Database is not initialized');
         reject('⚠️ Database is not initialized');
         return;
       }
@@ -119,13 +109,11 @@ export class DbCategoriesService {
       const request = store.getAll();
 
       request.onsuccess = () => {
-        this._logger.log('✅ Categories retrieved successfully');
         console.log('Categories retrieved successfully');
         resolve(request.result as CategoryInterface[]);
       };
 
       request.onerror = (event: Event) => {
-        this._logger.log('⚠️ Error retrieving categories: ' + (event.target as IDBRequest).error);
         console.error('Error retrieving categories:', (event.target as IDBRequest).error);
         window.alert('Error al recuperar las categorías');
         reject((event.target as IDBRequest).error);
@@ -136,7 +124,6 @@ export class DbCategoriesService {
   public updateCategory(category: CategoryInterface): Promise<void> {
     return new Promise((resolve, reject) => {
       if (!this.db) {
-        this._logger.log('⚠️ Database is not initialized');
         reject('⚠️ Database is not initialized');
         return;
       }
@@ -146,13 +133,11 @@ export class DbCategoriesService {
       const request = store.put(category);
 
       request.onsuccess = () => {
-        this._logger.log('✅ CATEGORY UPDATED: ' + category.uniqueId+' - '+category.name);
         window.alert('Categoría actualizada correctamente');
         resolve();
       };
 
       request.onerror = (event: Event) => {
-        this._logger.log('⚠️ Error updating category: ' + (event.target as IDBRequest).error);
         console.error('⚠️ Error updating category:', (event.target as IDBRequest).error);
         window.alert('Error al actualizar la categoría');
         reject((event.target as IDBRequest).error);
@@ -163,7 +148,6 @@ export class DbCategoriesService {
   public deleteCategory(uniqueId: string): Promise<void> {
     return new Promise((resolve, reject) => {
       if (!this.db) {
-        this._logger.log('⚠️ Database is not initialized');
         reject('⚠️ Database is not initialized');
         return;
       }
@@ -173,13 +157,11 @@ export class DbCategoriesService {
       const request = store.delete(uniqueId);
 
       request.onsuccess = () => {
-        this._logger.log('✅ Category deleted successfully: ' + uniqueId);
         window.alert('Categoría eliminada correctamente');
         resolve();
       };
 
       request.onerror = (event: Event) => {
-        this._logger.log('⚠️ Error deleting category: ' + (event.target as IDBRequest).error);
         console.error('⚠️ Error deleting category:', (event.target as IDBRequest).error);
         window.alert('Error al eliminar la categoría');
         reject((event.target as IDBRequest).error);
@@ -190,7 +172,6 @@ export class DbCategoriesService {
   public clearCategories(): Promise<void> {
     return new Promise((resolve, reject) => {
       if (!this.db) {
-        this._logger.log('⚠️ Database is not initialized');
         reject('⚠️ Database is not initialized');
         return;
       }
@@ -200,13 +181,11 @@ export class DbCategoriesService {
       const request = store.clear();
 
       request.onsuccess = () => {
-        this._logger.log('✅ All categories cleared successfully');
         window.alert('Todas las categorías han sido eliminadas correctamente');
         resolve();
       };
 
       request.onerror = (event: Event) => {
-        this._logger.log('⚠️ Error clearing categories: ' + (event.target as IDBRequest).error);
         console.error('Error clearing categories:', (event.target as IDBRequest).error);
         window.alert('Error al eliminar todas las categorías');
         reject((event.target as IDBRequest).error);
@@ -217,7 +196,6 @@ export class DbCategoriesService {
   importMultipleCategories(categories: CategoryInterface[]): Promise<void> {
     return new Promise((resolve, reject) => {
       if (!this.db) {
-        this._logger.log('⚠️ Database is not initialized');
         reject('⚠️ Database is not initialized');
         return;
       }
@@ -235,12 +213,10 @@ export class DbCategoriesService {
 
       Promise.all(promises)
         .then(() => {
-          this._logger.log('✅ All categories imported successfully');
           window.alert('Categorías importadas correctamente');
           resolve();
         })
         .catch(error => {
-          this._logger.log('⚠️ Error importing categories: ' + error);
           console.error('Error importing categories:', error);
           window.alert('Error al importar las categorías');
           reject(error);
