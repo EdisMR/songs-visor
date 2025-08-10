@@ -10,7 +10,7 @@
 }
 
 .category-chip {
-	border-radius: 60px;
+	border-radius: 20px;
 	padding-left: 8px;
 	padding-right: 8px;
 	cursor: pointer;
@@ -21,10 +21,6 @@
 }
 
 @media (orientation: portrait) and (width < 300px) {
-	:root {
-		--ft-size: 14px;
-	}
-
 	h1 {
 		font-size: 15px;
 	}
@@ -43,10 +39,6 @@
 
 
 @media (orientation: portrait) and (300px <=width <=399px) {
-	:root {
-		--ft-size: 17px;
-	}
-
 	h1 {
 		font-size: 22px;
 	}
@@ -66,10 +58,6 @@
 }
 
 @media (orientation: portrait) and (400px <=width <=599px) {
-	:root {
-		--ft-size: 15px;
-	}
-
 	h1 {
 		font-size: 19px;
 	}
@@ -87,10 +75,6 @@
 }
 
 @media (orientation: portrait) and (600px <=width <=750px) {
-	:root {
-		--ft-size: 14px;
-	}
-
 	h1 {
 		font-size: 16px;
 	}
@@ -106,10 +90,6 @@
 }
 
 @media (orientation: portrait) and (width>750px) {
-	:root {
-		--ft-size: 15px;
-	}
-
 	h1 {
 		font-size: 18px;
 	}
@@ -128,10 +108,6 @@
 
 
 @media (orientation: landscape) and (width < 820px) {
-	:root {
-		--ft-size: 16px;
-	}
-
 	h1 {
 		font-size: 20px;
 	}
@@ -142,10 +118,6 @@
 }
 
 @media (orientation: landscape) and (820px <=width <=870px) {
-	:root {
-		--ft-size: 18px;
-	}
-
 	h1 {
 		font-size: 22px;
 	}
@@ -157,10 +129,6 @@
 
 
 @media (orientation: landscape) and (870px <=width <=970px) {
-	:root {
-		--ft-size: 14px;
-	}
-
 	h1 {
 		font-size: 18px;
 	}
@@ -173,10 +141,6 @@
 
 
 @media (orientation: landscape) and (width > 970px) {
-	:root {
-		--ft-size: 14px;
-	}
-
 	h1 {
 		font-size: 22px;
 	}

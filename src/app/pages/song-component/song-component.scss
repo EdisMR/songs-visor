@@ -1,7 +1,3 @@
-:root {
-	--ft-size: 18px;
-}
-
 h1 {
 	font-size: 20px;
 }
@@ -73,10 +69,6 @@ h1 {
 
 
 @media (orientation: portrait) and (width < 300px) {
-	:root {
-		--ft-size: 14px;
-	}
-
 	body {
 		padding: 0;
 		margin: 0;
@@ -106,10 +98,6 @@ h1 {
 @media (orientation: portrait) and (300px <=width <=400px) {
 
 	/* CEL */
-	:root {
-		--ft-size: 17px;
-	}
-
 	body {
 		padding: 5px;
 		margin: 0;
@@ -139,10 +127,6 @@ h1 {
 }
 
 @media (orientation: portrait) and (400px <=width <=600px) {
-	:root {
-		--ft-size: 14px;
-	}
-
 	body {
 		padding: 3px;
 		margin: 0;
@@ -170,10 +154,6 @@ h1 {
 @media (orientation: portrait) and (600px <=width <=675px) {
 
 	/* Tablet */
-	:root {
-		--ft-size: 14px;
-	}
-
 	body {
 		padding: 3px;
 		margin: 0px;
@@ -193,10 +173,6 @@ h1 {
 }
 
 @media (orientation: portrait) and (width> 675px) {
-	:root {
-		--ft-size: 13px;
-	}
-
 	h1 {
 		font-size: 16px;
 	}
@@ -211,10 +187,6 @@ h1 {
 }
 
 @media (orientation: portrait) and (width > 700px) {
-	:root {
-		--ft-size: 15px;
-	}
-
 	h1 {
 		font-size: 17px;
 	}
@@ -235,10 +207,6 @@ h1 {
 
 
 @media (orientation: landscape) and (width < 820px) {
-	:root {
-		--ft-size: 16px;
-	}
-
 	h1 {
 		font-size: 18px;
 	}
@@ -247,10 +215,6 @@ h1 {
 @media (orientation: landscape) and (820px <=width <=870px) {
 
 	/* CEL */
-	:root {
-		--ft-size: 16px;
-	}
-
 	h1 {
 		font-size: 20px;
 	}
@@ -261,11 +225,6 @@ h1 {
 }
 
 @media (orientation: landscape) and (870px <=width <=970px) {
-
-	:root {
-		--ft-size: 14px;
-	}
-
 	h1 {
 		font-size: 19px;
 	}
@@ -276,12 +235,7 @@ h1 {
 }
 
 @media (orientation: landscape) and (width > 970px) {
-
 	/* tablet */
-	:root {
-		--ft-size: 14px;
-	}
-
 	h1 {
 		font-size: 16px;
 	}
@@ -293,10 +247,6 @@ h1 {
 
 @media (orientation: landscape) and (width > 1300px) {
 	/* tablet */
-	:root {
-		--ft-size: 15px;
-	}
-
 	h1 {
 		font-size: 17px;
 	}
