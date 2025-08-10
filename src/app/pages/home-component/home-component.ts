@@ -19,18 +19,17 @@ export class HomeComponent {
     private readonly _categoriesSvc: DbCategoriesService,
     private readonly _commonSvc: CommonService
   ) {
-    this._songsSvc.openDatabase().then(e => {
-      this.getSongsAndCategories()
-    })
-    this._categoriesSvc.openDatabase().then(e => {
+    Promise.all([
+      this._songsSvc.openDatabase(),
+      this._categoriesSvc.openDatabase()
+    ]).finally(() => {
       this.getSongsAndCategories()
     })
   }
   public songs: SongInterface[] = []
-
   public categories: CategoryInterface[] = []
 
-  public importData() {
+  public importDataFromFile() {
     this._commonSvc.readDatabaseFile().then((data: JsonFileInterface) => {
       this._commonSvc.importDatabaseFromJSONData(data).then(e => {
         this.getSongsAndCategories()
@@ -43,20 +42,38 @@ export class HomeComponent {
     if (!confirmation) {
       return
     }
-    this._songsSvc.clearSongs().then(e => {
-      this._categoriesSvc.clearCategories().then(e => {
-        this.songs = []
-        this.categories = []
-      })
+    Promise.all([
+      this._songsSvc.clearSongs(),
+      this._categoriesSvc.clearCategories()
+    ]).then(e => {
+      this.getSongsAndCategories()
     })
   }
 
   private getSongsAndCategories() {
-    this._songsSvc.getAllSongs().then(songs => {
+    /* multiple async functions in one */
+    Promise.all([
+      this._songsSvc.getAllSongs(),
+      this._categoriesSvc.getAllCategories()
+    ]).then(([songs, categories]) => {
       this.songs = songs
-    })
-    this._categoriesSvc.getAllCategories().then(categories => {
       this.categories = categories
+
+      for (let category of this.categories) {
+        let isCategoryUsed = false;
+        for (let song of this.songs) {
+          let categoriesIds = (song.categories).split(',');
+          if (categoriesIds.includes(category.uniqueId)) {
+            isCategoryUsed = true;
+            break;
+          }
+        }
+        if (!isCategoryUsed) {
+          this.categories = this.categories.filter(c => c.uniqueId != category.uniqueId);
+        }
+      }
+    }).finally(() => {
+      this.filterByCategory('all')
     })
   }
 
