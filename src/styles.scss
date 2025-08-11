@@ -22,3 +22,74 @@ footer {
 	margin-top: 100px;
 	margin-bottom: 25px;
 }
+
+/* *************************************************************** */
+/* *************************************************************** */
+/* *************************************************************** */
+/* *************************************************************** */
+
+/* Match 601 */
+@media screen and (600px < width < 700px) and (orientation: portrait) {
+	body {
+		background-color: rgb(231, 157, 31);
+		font-size: 15px;
+
+		h1 {
+			font-size: 29px;
+		}
+	}
+}
+
+
+/* *************************************************************** */
+/* *************************************************************** */
+/* *************************************************************** */
+/* *************************************************************** */
+
+/* Match 962 */
+@media screen and (600px < width < 1000px) and (orientation: landscape) {
+	body {
+		font-size: 14px;
+
+		h1 {
+			font-size: 17px;
+		}
+	}
+}
+
+@media screen and (1000px < width < 1200px) and (orientation: landscape) {
+	body {
+		background-color: rgb(63, 79, 20);
+		font-size: 15px;
+
+		h1 {
+			font-size: 17px;
+		}
+	}
+}
+
+/* Match 1280 */
+@media screen and (1200px < width < 1300px) and (orientation: landscape) {
+	body {
+		background-color: rgb(75, 28, 113);
+		font-size: 15px;
+
+		h1 {
+			font-size: 17px;
+		}
+	}
+}
+
+/* Match 1366 */
+@media screen and (1300px < width < 1400px) and (orientation: landscape) {
+	body {
+		background-color: rgb(87, 16, 27);
+		font-size: 15px;
+
+		h1 {
+			font-size: 30px;
+		}
+	}
+}
+
+@media screen and (min-width:1400px) and (orientation: landscape) {}

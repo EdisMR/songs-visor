@@ -2,6 +2,12 @@
 	list-style-type: none;
 	padding: 0px;
 	min-height: 150px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+	gap: 30px;
+	flex-wrap: wrap;
+
 }
 
 #filteredSongsListContainer li {
@@ -16,6 +22,6 @@
 	cursor: pointer;
 }
 
-.btn-db-actions{
+.btn-db-actions {
 	margin-top: 100px;
 }

@@ -57,16 +57,9 @@ export class HomeComponent implements OnDestroy {
       this._songsSvc.getAllSongs(),
       this._categoriesSvc.getAllCategories()
     ]).then(([songs, categories]) => {
-      /* sort by shortId and names */
-      songs.sort((a, b) => {
-        return parseInt(a.shortId) - parseInt(b.shortId)
-      })
-      categories.sort((a, b) => {
-        return a.name.localeCompare(b.name)
-      })
       this.songs = songs
       this.categories = categories
-
+      this.sortItems()
       /* Remove unused categories */
       for (let category of this.categories) {
         let isCategoryUsed = false;
@@ -83,7 +76,6 @@ export class HomeComponent implements OnDestroy {
       }
     }).finally(() => {
       this.filterByCategory('all')
-      this._cd.markForCheck()
     })
   }
 
@@ -123,6 +115,8 @@ export class HomeComponent implements OnDestroy {
       this.songs = []
       if (categoryId == 'all') {
         this.songs = songs
+        this.sortItems()
+        this._cd.markForCheck()
         return
       }
       songs.forEach(song => {
@@ -131,6 +125,18 @@ export class HomeComponent implements OnDestroy {
           this.songs.push(song)
         }
       })
+      this.sortItems()
+      this._cd.markForCheck()
+    })
+  }
+
+  sortItems() {
+    /* sort by shortId and names */
+    this.songs.sort((a, b) => {
+      return parseInt(a.shortId) - parseInt(b.shortId)
+    })
+    this.categories.sort((a, b) => {
+      return a.name.localeCompare(b.name)
     })
   }
 
