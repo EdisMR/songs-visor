@@ -1,18 +1,18 @@
 <div class="flex space-between wrap" id="songControlButtons">
 	<div>
-		<button>
-			<a [routerLink]="['']">Inicio</a>
+		<button [routerLink]="['']">
+			<span>Inicio</span>
 		</button>
 	</div>
 	<div>
 		<button (click)="songMaximizationArea.requestFullscreen()">&#x2927; Maximizar</button>
 	</div>
 	<div class="flex nowrap" id="transpositionButtons">
-		<button (click)="transposedSong(10)">-1</button>
-		<button (click)="transposedSong(11)">-&#189;</button>
-		<button (click)="resetTransposition()">0</button>
-		<button (click)="transposedSong(1)">+&#189;</button>
-		<button (click)="transposedSong(2)">+1</button>
+		<button class="default" (click)="transposedSong(10)">-1</button>
+		<button class="default" (click)="transposedSong(11)">-&#189;</button>
+		<button class="default" (click)="resetTransposition()">0</button>
+		<button class="default" (click)="transposedSong(1)">+&#189;</button>
+		<button class="default" (click)="transposedSong(2)">+1</button>
 	</div>
 </div>
 

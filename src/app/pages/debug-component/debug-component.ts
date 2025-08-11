@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { environment } from '../../../environments/environment.development';
 
 @Component({
   selector: 'app-debug-component',
@@ -41,8 +42,8 @@ export class DebugComponent {
   public get debugData(): string {
     return JSON.stringify({
       projectDetails: {
-        projectShortName: '250801-1',
-        projectBuildDate: '2025-08-01 20:46:15',
+        projectShortName: environment.shortNameVersion,
+        projectBuildDate: environment.dateBuild,
         currentClientDate: this.parseDate(new Date()),
       },
       DeviceDetails: this.DeviceDetails,

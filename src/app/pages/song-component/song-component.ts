@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { SongInterface } from '../../interface/song-interface';
@@ -10,7 +10,7 @@ import { DbSongsService } from '../../services/db-songs.service';
   templateUrl: './song-component.html',
   styleUrl: './song-component.scss'
 })
-export class SongComponent {
+export class SongComponent implements OnDestroy {
   constructor(
     private readonly _songsSvc: DbSongsService,
     private readonly _activatedRoute: ActivatedRoute,
@@ -19,29 +19,24 @@ export class SongComponent {
     this.activatedRouteSubscription = this._activatedRoute.params.subscribe(params => {
       this._songsSvc.openDatabase().then(() => {
         this.songId = params['id'] || '';
-        if (this.songId) {
-          this.getCurrentSong(this.songId);
-        } else {
-          console.error('No se ha proporcionado un ID de canto válido.');
-        }
         this._songsSvc.getAllSongs().then(songs => {
           this.otherSongsLinks = songs.map(song => song.shortId);
+          if (this.songId) {
+            this.rawSong = songs.find(song => song.shortId === this.songId) || {} as SongInterface
+            this.relatedLinksProcessed = this.rawSong.relatedLinks.split(',') || []
+            if (!this.rawSong.name) {
+              this._Router.navigate([''])
+            }
+          } else {
+            this._Router.navigate([''])
+          }
         })
       });
     });
   }
+
   activatedRouteSubscription: Subscription
   songId: string = ''
-
-  getCurrentSong(songId: string) {
-    console.log('value for songId: ', songId)
-    this._songsSvc.getByshortId(songId).then(song => {
-      if (!song) {
-        this._Router.navigate([''])
-      }
-      this.rawSong = song
-    })
-  }
 
   public rawSong: SongInterface = {
     author: '',
@@ -55,10 +50,7 @@ export class SongComponent {
     uniqueId: ''
   }
 
-  get relatedLinksProcessed(): string[] {
-    if (!this.rawSong.relatedLinks) return [];
-    return this.rawSong.relatedLinks.split(',');
-  }
+  public relatedLinksProcessed: string[] = []
 
   public otherSongsLinks: string[] = []
 
@@ -82,4 +74,7 @@ export class SongComponent {
     }
   }
 
+  ngOnDestroy(): void {
+    this.activatedRouteSubscription?.unsubscribe();
+  }
 }

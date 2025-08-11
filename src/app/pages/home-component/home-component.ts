@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
 import { BehaviorSubject, debounceTime } from 'rxjs';
 import { CategoryInterface } from '../../interface/category-interface';
 import { JsonFileInterface } from '../../interface/json-file-interface';
@@ -11,13 +11,15 @@ import { DbSongsService } from '../../services/db-songs.service';
   selector: 'app-home-component',
   standalone: false,
   templateUrl: './home-component.html',
-  styleUrl: './home-component.scss'
+  styleUrl: './home-component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HomeComponent {
+export class HomeComponent implements OnDestroy {
   constructor(
     private readonly _songsSvc: DbSongsService,
     private readonly _categoriesSvc: DbCategoriesService,
-    private readonly _commonSvc: CommonService
+    private readonly _commonSvc: CommonService,
+    private readonly _cd: ChangeDetectorRef
   ) {
     Promise.all([
       this._songsSvc.openDatabase(),
@@ -51,14 +53,21 @@ export class HomeComponent {
   }
 
   private getSongsAndCategories() {
-    /* multiple async functions in one */
     Promise.all([
       this._songsSvc.getAllSongs(),
       this._categoriesSvc.getAllCategories()
     ]).then(([songs, categories]) => {
+      /* sort by shortId and names */
+      songs.sort((a, b) => {
+        return parseInt(a.shortId) - parseInt(b.shortId)
+      })
+      categories.sort((a, b) => {
+        return a.name.localeCompare(b.name)
+      })
       this.songs = songs
       this.categories = categories
 
+      /* Remove unused categories */
       for (let category of this.categories) {
         let isCategoryUsed = false;
         for (let song of this.songs) {
@@ -74,6 +83,7 @@ export class HomeComponent {
       }
     }).finally(() => {
       this.filterByCategory('all')
+      this._cd.markForCheck()
     })
   }
 
@@ -122,5 +132,11 @@ export class HomeComponent {
         }
       })
     })
+  }
+
+  ngOnDestroy(): void {
+    this.filterTimeController.next(0)
+    this.filterTimeController.unsubscribe()
+    this.filterTimeController.closed
   }
 }
