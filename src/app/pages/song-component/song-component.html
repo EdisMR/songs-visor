@@ -45,7 +45,10 @@
 		}
 	</ul>
 </section>
-
+<div class="dateRelatedInfo">
+	<p>Creado: {{rawSong.dateCreated|parseDate}}</p>
+	<p>Modificado: {{rawSong.dateUpdated|parseDate}}</p>
+</div>
 <hr>
 <section id="otherSongsLinks">
 	@for(songShortId of otherSongsLinks;track songShortId){

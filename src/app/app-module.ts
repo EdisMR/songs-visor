@@ -9,6 +9,7 @@ import { DebugComponent } from './pages/debug-component/debug-component';
 import { FooterComponent } from './components/footer-component/footer-component';
 import { ProcessedSongTextPipe } from './pipes/processed-song-text-pipe';
 import { ProcessedCategoriesTextPipe } from './pipes/processed-categories-text-pipe';
+import { ParseDatePipe } from './pipes/parse-date-pipe';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ProcessedCategoriesTextPipe } from './pipes/processed-categories-text-p
     FooterComponent,
     ProcessedSongTextPipe,
     ProcessedCategoriesTextPipe,
+    ParseDatePipe,
   ],
   imports: [
     BrowserModule,

@@ -59,6 +59,19 @@
 	font-family: 'Martian Mono', "Roboto Mono", monospace;
 }
 
-.related-links{
-	margin-bottom: 100px;
+.related-links {
+	margin: 0;
+}
+
+.dateRelatedInfo {
+	font-size: 10px;
+	text-align: right;
+
+	p {
+		margin: 0;
+	}
+}
+
+hr {
+	margin-top: 0;
 }
