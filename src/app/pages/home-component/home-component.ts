@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
-import { BehaviorSubject, debounceTime } from 'rxjs';
+import { BehaviorSubject, debounceTime, Subscription } from 'rxjs';
 import { CategoryInterface } from '../../interface/category-interface';
 import { JsonFileInterface } from '../../interface/json-file-interface';
 import { SongInterface } from '../../interface/song-interface';
@@ -79,36 +79,33 @@ export class HomeComponent implements OnDestroy {
     })
   }
 
-  private filterTimeController: BehaviorSubject<number> = new BehaviorSubject<number>(0)
-  private filterTime = this.filterTimeController.asObservable()
-  public searchSong(event: any) {
-    if (event.target.value.length == 0) {
-      this.getSongsAndCategories()
-      return
-    }
-    let stringToEvaluate = ((event.target.value as string).toLowerCase())
-    this.filterTimeController.next(1)
-    this.filterTime
-      .pipe(
-        debounceTime(1000)
-      )
-      .subscribe(e => {
-        if (e == 1) {
-          this._songsSvc.getAllSongs().then(songs => {
-            this.songs = []
-            songs.forEach(song => {
-              if (song.name.toLowerCase().includes(stringToEvaluate)) {
-                this.songs.push(song)
-              }
-              if (song.songText.toLowerCase().includes(stringToEvaluate)) {
-                this.songs.push(song)
-              }
-            })
-          })
-          this.filterTimeController.next(0)
-        }
+
+  private counterBehaviour: BehaviorSubject<string> = new BehaviorSubject<string>('')
+  private counterBehaviour$ = this.counterBehaviour.asObservable()
+  private workingPromise: boolean = false
+  private counterBehaviourAdmin: Subscription = this.counterBehaviour$
+    .pipe(
+      debounceTime(1000)
+    )
+    .subscribe(result => {
+      if (this.workingPromise) {
+        return
+      }
+      this.workingPromise = true
+      this.songs = []
+      this._songsSvc.getAllSongs().then((songs: SongInterface[]) => {
+        this.songs = songs.filter(song => {
+          return song.songText.toLowerCase().includes(result) || song.name.toLowerCase().includes(result)
+        })
+        this.workingPromise = false
+        this.sortItems()
+        this._cd.markForCheck()
       })
+    })
+  public searchSong(event: any) {
+    this.counterBehaviour.next(event.target.value.toLowerCase())
   }
+
 
   public filterByCategory(categoryId: string) {
     this._songsSvc.getAllSongs().then(songs => {
@@ -130,7 +127,7 @@ export class HomeComponent implements OnDestroy {
     })
   }
 
-  sortItems() {
+  private sortItems() {
     /* sort by shortId and names */
     this.songs.sort((a, b) => {
       return parseInt(a.shortId) - parseInt(b.shortId)
@@ -141,8 +138,6 @@ export class HomeComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.filterTimeController.next(0)
-    this.filterTimeController.unsubscribe()
-    this.filterTimeController.closed
+    this.counterBehaviourAdmin?.unsubscribe()
   }
 }

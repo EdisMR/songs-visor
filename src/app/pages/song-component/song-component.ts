@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostListener, OnDestroy, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { SongInterface } from '../../interface/song-interface';
@@ -26,6 +26,40 @@ export class SongComponent implements OnDestroy {
     });
   }
 
+  @ViewChild('songMaximizationArea') songMaximizationArea!: ElementRef<HTMLElement>;
+
+  @HostListener('document:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (event.key === 'm' || event.key === 'M') {
+      this.requestFullscreen();
+    }
+    if (event.key === '+') {
+      this.transposedValue++
+    }
+    if (event.key === '-') {
+      this.transposedValue--
+    }
+    if (event.key === '0') {
+      this.resetTransposition()
+    }
+  }
+
+  private requestFullscreen(): void {
+    const elem = this.songMaximizationArea.nativeElement;
+
+    try {
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      } else if ((elem as any).webkitRequestFullscreen) { // Safari
+        (elem as any).webkitRequestFullscreen();
+      } else if ((elem as any).msRequestFullscreen) { // IE/Edge
+        (elem as any).msRequestFullscreen();
+      }
+    } catch (err) {
+      console.error('Error al intentar fullscreen:', err);
+    }
+  }
+
   getSongInfo() {
     this._songsSvc.getAllSongs().then(songs => {
       this.otherSongsLinks = songs.map(song => song.shortId);
@@ -45,8 +79,8 @@ export class SongComponent implements OnDestroy {
     })
   }
 
-  activatedRouteSubscription: Subscription
-  songId: string = ''
+  private activatedRouteSubscription: Subscription
+  private songId: string = ''
 
   public rawSong: SongInterface = {
     author: '',
@@ -72,7 +106,7 @@ export class SongComponent implements OnDestroy {
     this.transposedValue = 0
   }
 
-  closeFullscreen(): void {
+  public closeFullscreen(): void {
     if (document.exitFullscreen) {
       document.exitFullscreen()
     } else if ((document as any).mozCancelFullScreen) {
