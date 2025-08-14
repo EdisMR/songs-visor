@@ -30,18 +30,119 @@ footer {
 /* *************************************************************** */
 /* *************************************************************** */
 
-/* Match 601 */
-@media screen and (600px < width < 700px) and (orientation: portrait) {
+@media screen and (max-width:300px) and (orientation: portrait) {
 	body {
 		@if($developmentMode) {
-			background-color: rgb(231, 157, 31);
+			background-color: rgb(52, 8, 8);
 		}
 
-		font-size: 15px;
+		font-size: 11px;
 	}
 
 	h1 {
-		font-size: 29px;
+		font-size: 11px;
+	}
+
+	pre {
+		font-size: 11;
+	}
+}
+
+/* Match 384 */
+@media screen and (300px < width < 500px) and (orientation: portrait) {
+	body {
+		@if($developmentMode) {
+			background-color: rgb(35, 64, 55);
+			margin: 0;
+			padding: 5px;
+		}
+
+		font-size: 11px;
+	}
+
+	h1 {
+		font-size: 12px;
+	}
+
+	pre {
+		font-size: 12px;
+	}
+}
+
+/* Match 601 */
+@media screen and (500px < width < 700px) and (orientation: portrait) {
+	body {
+		@if($developmentMode) {
+			background-color: rgb(3, 64, 3);
+		}
+
+		font-size: 11px;
+	}
+
+	h1 {
+		font-size: 12px;
+	}
+
+	pre {
+		font-size: 14px;
+	}
+}
+
+/* Match 1024 */
+@media screen and (700px < width < 1000px) and (orientation: portrait) {
+	body {
+		@if($developmentMode) {
+			background-color: rgb(9, 22, 62);
+			margin: 0;
+			padding: 5px;
+		}
+
+		font-size: 12px;
+	}
+
+	h1 {
+		font-size: 14px;
+	}
+
+	pre {
+		font-size: 18px;
+	}
+}
+
+/* Match 1024 */
+@media screen and (1000px < width < 1200px) and (orientation: portrait) {
+	body {
+		@if($developmentMode) {
+			background-color: rgb(57, 57, 8);
+		}
+
+		font-size: 14px;
+	}
+
+	h1 {
+		font-size: 15px;
+	}
+
+	pre {
+		font-size: 17px;
+	}
+}
+
+@media screen and (min-width:1200px) and (orientation: portrait) {
+	body {
+		@if($developmentMode) {
+			background-color: rgb(49, 49, 49);
+		}
+
+		font-size: 16px;
+	}
+
+	h1 {
+		font-size: 18px;
+	}
+	
+	pre {
+		font-size: 20px;
 	}
 }
 
@@ -81,39 +182,10 @@ footer {
 }
 
 /* Match 962 */
-@media screen and (900px < width < 1000px) and (orientation: landscape) {
+@media screen and (900px < width < 1300px) and (orientation: landscape) {
 	body {
 		@if($developmentMode) {
 			background-color: rgb(9, 22, 62);
-		}
-
-		font-size: 13px;
-	}
-
-	h1 {
-		font-size: 15px;
-	}
-}
-
-@media screen and (1000px < width < 1200px) and (orientation: landscape) {
-	body {
-		@if($developmentMode) {
-			background-color: rgb(41, 41, 41);
-		}
-
-		font-size: 15px;
-	}
-
-	h1 {
-		font-size: 17px;
-	}
-}
-
-/* Match 1280 */
-@media screen and (1200px < width < 1300px) and (orientation: landscape) {
-	body {
-		@if($developmentMode) {
-			background-color: rgb(57, 8, 57);
 		}
 
 		font-size: 13px;
@@ -135,7 +207,7 @@ footer {
 	}
 
 	h1 {
-		font-size: 18px;
+		font-size: 15px;
 	}
 }
 
@@ -145,7 +217,7 @@ footer {
 			background-color: rgb(23, 61, 50);
 		}
 
-		font-size: 12px;
+		font-size: 13px;
 	}
 
 	h1 {
