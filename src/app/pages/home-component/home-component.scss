@@ -24,3 +24,23 @@
 .btn-db-actions {
 	margin-top: 100px;
 }
+
+@media screen and (max-width: 600px) and (orientation: portrait) {
+
+	form,
+	fieldset {
+		margin: 0;
+		padding: 0;
+	}
+}
+
+@media screen and (600px < width < 650px) and (orientation: portrait) {
+
+	form {
+		padding: 5px;
+	}
+
+	fieldset {
+		margin: 0;
+	}
+}

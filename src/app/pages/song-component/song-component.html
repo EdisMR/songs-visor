@@ -28,11 +28,11 @@
 </section>
 
 <section class="categories">
-	<p>categorias: {{(rawSong.categories|processedCategoriesText)|async}}</p>
+	<p>Categorias: {{(rawSong.categories|processedCategoriesText)|async}}</p>
 </section>
 
 <section class="related-links">
-	<strong>Enlaces relacionados</strong>
+	<div>Enlaces relacionados:</div>
 	<ul>
 		@if(relatedLinksProcessed.length == 0){
 		<li>-- No hay enlaces relacionados. --</li>

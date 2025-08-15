@@ -21,7 +21,7 @@
 #songMaximizationArea:fullscreen #songText-processed {
 	background-color: #000;
 	font-weight: bold;
-	padding: 2px 0px 200px 2px;
+	padding: 2px 0px 130px 2px;
 }
 
 #songMaximizationArea:fullscreen #closeFullscreen {
@@ -49,6 +49,12 @@
 	font-weight: bold;
 }
 
+.categories{
+	padding: 0;
+	margin: 0;
+	margin-bottom: 5px;
+}
+
 #otherSongsLinks {
 	display: flex;
 	align-items: center;
@@ -74,4 +80,16 @@
 
 hr {
 	margin-top: 0;
+}
+
+@media screen and (max-width: 600px) and (orientation: portrait) {
+	pre {
+		padding: 0px;
+	}
+}
+
+@media screen and (600px < width < 650px) and (orientation: portrait) {
+	pre {
+		padding: 8px 5px;
+	}
 }
