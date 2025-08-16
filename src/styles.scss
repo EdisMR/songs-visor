@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-$developmentMode: false;
+$developmentMode: 0;
 
 html {
 	user-select: none;
@@ -32,7 +32,7 @@ footer {
 
 @media screen and (max-width:300px) and (orientation: portrait) {
 	body {
-		@if($developmentMode) {
+		@if($developmentMode==1) {
 			background-color: rgb(52, 8, 8);
 		}
 
@@ -53,7 +53,7 @@ footer {
 /* Match 384 */
 @media screen and (300px < width < 500px) and (orientation: portrait) {
 	body {
-		@if($developmentMode) {
+		@if($developmentMode==1) {
 			background-color: rgb(35, 64, 55);
 		}
 
@@ -74,7 +74,7 @@ footer {
 /* Match 601 */
 @media screen and (500px < width < 700px) and (orientation: portrait) {
 	body {
-		@if($developmentMode) {
+		@if($developmentMode==1) {
 			background-color: rgb(3, 64, 3);
 		}
 
@@ -92,11 +92,11 @@ footer {
 	}
 }
 
-/* Match 1024 */
-@media screen and (700px < width < 1200px) and (orientation: portrait) {
+/* Match 768 and 1024 */
+@media screen and (700px < width < 900px) and (orientation: portrait) {
 	body {
-		@if($developmentMode) {
-			background-color: rgb(9, 22, 62);
+		@if($developmentMode==1) {
+			background-color: rgb(97, 104, 124);
 		}
 
 		margin: 0;
@@ -113,9 +113,30 @@ footer {
 	}
 }
 
+/* Match 768 and 1024 */
+@media screen and (900px < width < 1200px) and (orientation: portrait) {
+	body {
+		@if($developmentMode==1) {
+			background-color: rgb(9, 22, 62);
+		}
+
+		margin: 0;
+		padding: 0px 20px;
+		font-size: 15px;
+	}
+
+	h1 {
+		font-size: 15px;
+	}
+
+	pre {
+		font-size: 18px;
+	}
+}
+
 @media screen and (min-width:1200px) and (orientation: portrait) {
 	body {
-		@if($developmentMode) {
+		@if($developmentMode==1) {
 			background-color: rgb(49, 49, 49);
 		}
 
@@ -141,28 +162,28 @@ footer {
 
 @media screen and (max-width:800px) and (orientation: landscape) {
 	body {
-		@if($developmentMode) {
+		@if($developmentMode==1) {
 			background-color: rgb(52, 8, 8);
 		}
 
-		font-size: 13px;
+		font-size: 14px;
 		margin: 0;
-		padding: 0px;
+		padding: 0px 5px;
 	}
 
 	h1 {
-		font-size: 13px;
+		font-size: 14px;
 	}
 
 	pre {
-		font-size: 14px;
+		font-size: 16px;
 	}
 }
 
 /* Match 857 */
 @media screen and (800px < width < 900px) and (orientation: landscape) {
 	body {
-		@if($developmentMode) {
+		@if($developmentMode==1) {
 			background-color: rgb(10, 64, 10);
 		}
 
@@ -183,7 +204,7 @@ footer {
 /* Match 962 */
 @media screen and (900px < width < 1300px) and (orientation: landscape) {
 	body {
-		@if($developmentMode) {
+		@if($developmentMode==1) {
 			background-color: rgb(9, 22, 62);
 		}
 
@@ -203,7 +224,7 @@ footer {
 /* Match 1366 */
 @media screen and (1300px < width < 1400px) and (orientation: landscape) {
 	body {
-		@if($developmentMode) {
+		@if($developmentMode==1) {
 			background-color: rgb(57, 57, 8);
 		}
 
@@ -219,20 +240,39 @@ footer {
 	}
 }
 
-@media screen and (min-width:1400px) and (orientation: landscape) {
+@media screen and (1400px < width < 1600px) and (orientation: landscape) {
 	body {
-		@if($developmentMode) {
+		@if($developmentMode==1) {
 			background-color: rgb(48, 84, 85);
 		}
 
-		font-size: 16px;
+		font-size: 14px;
 	}
 
 	h1 {
-		font-size: 16px;
+		font-size: 15px;
 	}
 
 	pre {
-		font-size: 20px;
+		font-size: 17px;
 	}
 }
+
+@media screen and (min-width:1600px) and (orientation: landscape) {
+	body {
+		@if($developmentMode==1) {
+			background-color: rgb(48, 84, 85);
+		}
+
+		font-size: 14px;
+	}
+
+	h1 {
+		font-size: 14px;
+	}
+
+	pre {
+		font-size: 15px;
+	}
+}
+

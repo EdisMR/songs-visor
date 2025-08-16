@@ -44,3 +44,12 @@
 		margin: 0;
 	}
 }
+
+@media screen and (max-width: 800px) and (orientation: landscape) {
+
+	form,
+	fieldset {
+		margin: 0;
+		padding: 0;
+	}
+}
