@@ -18,6 +18,11 @@
 
 <section>
 	<h1>{{rawSong.shortId}} - {{rawSong.name}}</h1>
+	@if(rawSong.author){
+	<div>
+		{{rawSong.author}}
+	</div>
+	}
 
 </section>
 <section id="songMaximizationArea" #songMaximizationArea>
@@ -27,10 +32,9 @@
 </pre>
 </section>
 
-<section class="categories">
-	<p>Categorias: {{(rawSong.categories|processedCategoriesText)|async}}</p>
-</section>
-
+<div>
+	<span>Categorías: {{(rawSong.categories|processedCategoriesText)|async}}</span>
+</div>
 <section class="related-links">
 	<div>Enlaces relacionados:</div>
 	<ul>
@@ -45,6 +49,7 @@
 		}
 	</ul>
 </section>
+
 <div class="dateRelatedInfo">
 	<p>Creado: {{rawSong.dateCreated|parseDate}}</p>
 	<p>Modificado: {{rawSong.dateUpdated|parseDate}}</p>
