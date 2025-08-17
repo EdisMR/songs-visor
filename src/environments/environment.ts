@@ -1,4 +1,4 @@
 export const environment = {
-	shortNameVersion: '250815-2',
+	shortNameVersion: '250817-1',
 	dateBuild: new Date().toISOString()
 };
