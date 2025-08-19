@@ -41,6 +41,13 @@ export class HomeComponent implements OnDestroy {
           })
         }
       })
+    } else {
+      Promise.all([
+        this._songsSvc.openDatabase(),
+        this._categoriesSvc.openDatabase()
+      ]).finally(() => {
+        this.getSongsAndCategories()
+      })
     }
   }
   private readonly SSVERIFICATIONNAME = "verifiedDatabaseVersion"
