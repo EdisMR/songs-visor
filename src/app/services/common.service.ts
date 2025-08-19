@@ -2,9 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { CategoryInterface } from '../interface/category-interface';
 import { JsonFileInterface } from '../interface/json-file-interface';
-import { SongInterface } from '../interface/song-interface';
 import { DbCategoriesService } from './db-categories.service';
 import { DbSongsService } from './db-songs.service';
 
@@ -19,29 +17,7 @@ export class CommonService {
   ) {
   }
 
-  downloadDatabase(songs: SongInterface[], categories: CategoryInterface[]) {
-    let downloadableFile: JsonFileInterface = {
-      version: "1.0.0",
-      lastUpdate: new Date().toISOString(),
-      creationDate: "2025-08-06T13:29:55.704Z",
-      songs: songs,
-      categories: categories
-    }
-
-    const fileName = 'songs-database.json';
-    const jsonString = JSON.stringify(downloadableFile, null, 2);
-    const blob = new Blob([jsonString], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = fileName;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-  }
-
   readDatabaseFile(): Promise<JsonFileInterface> {
-
     /* create an input and catch file */
     const fileInput = document.createElement('input');
     fileInput.type = 'file';
@@ -95,14 +71,7 @@ export class CommonService {
     });
   }
 
-  verifyDatabaseFileVersion(): Observable<any> {
-    const urlBase: string = environment.baseUrl;
-    const fileName: string = environment.hashSongsFile;
-    console.log("verifyDatabaseFileVersion", urlBase, fileName)
-    return this._http.get(`${urlBase}${fileName}`)
-  }
-
-  importDatabaseFromUrl(): Observable<JsonFileInterface> {
+  importDatabaseFromServedUrl(): Observable<JsonFileInterface> {
     const urlBase: string = environment.baseUrl;
     const fileName: string = environment.songsFile;
     console.log("importDatabaseFromUrl", urlBase, fileName)

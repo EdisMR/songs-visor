@@ -23,23 +23,16 @@ export class HomeComponent implements OnDestroy {
   ) {
 
     if (sessionStorage.getItem(this.SSVERIFICATIONNAME) == null) {
-      this._commonSvc.verifyDatabaseFileVersion().subscribe({
-        error: () => {
-          this._commonSvc.importDatabaseFromUrl().subscribe(result => {
-            this._commonSvc.importDatabaseFromJSONData(result).then(e => {
-              this.getSongsAndCategories()
-              sessionStorage.setItem(this.SSVERIFICATIONNAME, '1')
-            })
-          })
-        },
-        complete: () => {
+      this._commonSvc.importDatabaseFromServedUrl().subscribe((songsDb: JsonFileInterface) => {
+        this._commonSvc.importDatabaseFromJSONData(songsDb).then(e => {
+          sessionStorage.setItem(this.SSVERIFICATIONNAME, '1')
           Promise.all([
             this._songsSvc.openDatabase(),
             this._categoriesSvc.openDatabase()
           ]).finally(() => {
             this.getSongsAndCategories()
           })
-        }
+        })
       })
     } else {
       Promise.all([
