@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-$developmentMode: 0;
+$developmentMode: 1;
 
 html {
 	user-select: none;
@@ -30,7 +30,7 @@ footer {
 /* *************************************************************** */
 /* *************************************************************** */
 
-@media screen and (max-width:300px) and (orientation: portrait) {
+@media screen and (max-width:310px) and (orientation: portrait) {
 	body {
 		@if($developmentMode==1) {
 			background-color: rgb(52, 8, 8);
@@ -45,13 +45,13 @@ footer {
 		font-size: 12px;
 	}
 
-	pre {
-		font-size: 11;
+	#songText-processed {
+		font-size: 11 !important;
 	}
 }
 
 /* Match 384 */
-@media screen and (300px <=width < 500px) and (orientation: portrait) {
+@media screen and (310px <=width < 510px) and (orientation: portrait) {
 	body {
 		@if($developmentMode==1) {
 			background-color: rgb(35, 64, 55);
@@ -66,13 +66,13 @@ footer {
 		font-size: 16px;
 	}
 
-	pre {
-		font-size: 13px;
+	#songText-processed {
+		font-size: 13px !important;
 	}
 }
 
 /* Match 601 */
-@media screen and (500px <=width < 700px) and (orientation: portrait) {
+@media screen and (510px <=width < 710px) and (orientation: portrait) {
 	body {
 		@if($developmentMode==1) {
 			background-color: rgb(3, 64, 3);
@@ -87,13 +87,13 @@ footer {
 		font-size: 16px;
 	}
 
-	pre {
-		font-size: 15px;
+	#songText-processed {
+		font-size: 15px !important;
 	}
 }
 
 /* Match 768 and 1024 */
-@media screen and (700px <=width < 900px) and (orientation: portrait) {
+@media screen and (710px <=width < 910px) and (orientation: portrait) {
 	body {
 		@if($developmentMode==1) {
 			background-color: rgb(97, 104, 124);
@@ -108,13 +108,13 @@ footer {
 		font-size: 16px;
 	}
 
-	pre {
-		font-size: 22px;
+	#songText-processed {
+		font-size: 22px !important;
 	}
 }
 
 /* Match 768 and 1024 */
-@media screen and (900px <=width < 1200px) and (orientation: portrait) {
+@media screen and (910px <=width < 1210px) and (orientation: portrait) {
 	body {
 		@if($developmentMode==1) {
 			background-color: rgb(9, 22, 62);
@@ -129,12 +129,12 @@ footer {
 		font-size: 15px;
 	}
 
-	pre {
-		font-size: 18px;
+	#songText-processed {
+		font-size: 18px !important;
 	}
 }
 
-@media screen and (min-width:1200px) and (orientation: portrait) {
+@media screen and (min-width:1210px) and (orientation: portrait) {
 	body {
 		@if($developmentMode==1) {
 			background-color: rgb(49, 49, 49);
@@ -149,8 +149,8 @@ footer {
 		font-size: 18px;
 	}
 
-	pre {
-		font-size: 20px;
+	#songText-processed {
+		font-size: 20px !important;
 	}
 }
 
@@ -160,7 +160,7 @@ footer {
 /* *************************************************************** */
 /* *************************************************************** */
 
-@media screen and (max-width:800px) and (orientation: landscape) {
+@media screen and (max-width:810px) and (orientation: landscape) {
 	body {
 		@if($developmentMode==1) {
 			background-color: rgb(52, 8, 8);
@@ -175,13 +175,13 @@ footer {
 		font-size: 14px;
 	}
 
-	pre {
-		font-size: 16px;
+	#songText-processed {
+		font-size: 16px !important;
 	}
 }
 
 /* Match 857 */
-@media screen and (800px <=width < 900px) and (orientation: landscape) {
+@media screen and (810px <=width < 910px) and (orientation: landscape) {
 	body {
 		@if($developmentMode==1) {
 			background-color: rgb(10, 64, 10);
@@ -196,13 +196,13 @@ footer {
 		font-size: 15px;
 	}
 
-	pre {
-		font-size: 16px;
+	#songText-processed {
+		font-size: 16px !important;
 	}
 }
 
 /* Match 962 */
-@media screen and (900px <=width < 1300px) and (orientation: landscape) {
+@media screen and (910px <=width < 1310px) and (orientation: landscape) {
 	body {
 		@if($developmentMode==1) {
 			background-color: rgb(9, 22, 62);
@@ -216,13 +216,13 @@ footer {
 		font-size: 15px;
 	}
 
-	pre {
-		font-size: 16px;
+	#songText-processed {
+		font-size: 16px !important;
 	}
 }
 
 /* Match 1366 */
-@media screen and (1300px <=width < 1400px) and (orientation: landscape) {
+@media screen and (1310px <=width < 1410px) and (orientation: landscape) {
 	body {
 		@if($developmentMode==1) {
 			background-color: rgb(57, 57, 8);
@@ -235,12 +235,12 @@ footer {
 		font-size: 15px;
 	}
 
-	pre {
-		font-size: 18px;
+	#songText-processed {
+		font-size: 18px !important;
 	}
 }
 
-@media screen and (1400px <=width < 1600px) and (orientation: landscape) {
+@media screen and (1410px <=width < 1610px) and (orientation: landscape) {
 	body {
 		@if($developmentMode==1) {
 			background-color: rgb(48, 84, 85);
@@ -253,12 +253,12 @@ footer {
 		font-size: 15px;
 	}
 
-	pre {
-		font-size: 17px;
+	#songText-processed {
+		font-size: 17px !important;
 	}
 }
 
-@media screen and (min-width:1600px) and (orientation: landscape) {
+@media screen and (min-width:1610px) and (orientation: landscape) {
 	body {
 		@if($developmentMode==1) {
 			background-color: rgb(48, 84, 85);
@@ -271,7 +271,7 @@ footer {
 		font-size: 14px;
 	}
 
-	pre {
-		font-size: 15px;
+	#songText-processed {
+		font-size: 15px !important;
 	}
 }

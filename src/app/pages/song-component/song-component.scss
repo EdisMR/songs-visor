@@ -86,13 +86,13 @@ hr {
 	margin-top: 0;
 }
 
-@media screen and (max-width: 600px) and (orientation: portrait) {
+@media screen and (max-width: 610px) and (orientation: portrait) {
 	pre {
 		padding: 0px;
 	}
 }
 
-@media screen and (600px <= width < 650px) and (orientation: portrait) {
+@media screen and (610px <= width < 660px) and (orientation: portrait) {
 	pre {
 		padding: 8px 5px;
 	}
