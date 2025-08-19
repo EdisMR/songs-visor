@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from '../../environments/environment.development';
+import { environment } from '../../environments/environment';
 import { CategoryInterface } from '../interface/category-interface';
 import { JsonFileInterface } from '../interface/json-file-interface';
 import { SongInterface } from '../interface/song-interface';
