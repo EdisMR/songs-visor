@@ -51,7 +51,7 @@ footer {
 }
 
 /* Match 384 */
-@media screen and (300px < width < 500px) and (orientation: portrait) {
+@media screen and (300px <=width < 500px) and (orientation: portrait) {
 	body {
 		@if($developmentMode==1) {
 			background-color: rgb(35, 64, 55);
@@ -72,7 +72,7 @@ footer {
 }
 
 /* Match 601 */
-@media screen and (500px < width < 700px) and (orientation: portrait) {
+@media screen and (500px <=width < 700px) and (orientation: portrait) {
 	body {
 		@if($developmentMode==1) {
 			background-color: rgb(3, 64, 3);
@@ -93,13 +93,13 @@ footer {
 }
 
 /* Match 768 and 1024 */
-@media screen and (700px < width < 900px) and (orientation: portrait) {
+@media screen and (700px <=width < 900px) and (orientation: portrait) {
 	body {
 		@if($developmentMode==1) {
 			background-color: rgb(97, 104, 124);
 		}
 
-		margin: 0;
+		margin: 0 auto;
 		padding: 0px 20px;
 		font-size: 16px;
 	}
@@ -114,13 +114,13 @@ footer {
 }
 
 /* Match 768 and 1024 */
-@media screen and (900px < width < 1200px) and (orientation: portrait) {
+@media screen and (900px <=width < 1200px) and (orientation: portrait) {
 	body {
 		@if($developmentMode==1) {
 			background-color: rgb(9, 22, 62);
 		}
 
-		margin: 0;
+		margin: 0 auto;
 		padding: 0px 20px;
 		font-size: 15px;
 	}
@@ -141,7 +141,7 @@ footer {
 		}
 
 		font-size: 18px;
-		margin: 0;
+		margin: 0 auto;
 		padding: 0px 30px;
 	}
 
@@ -181,7 +181,7 @@ footer {
 }
 
 /* Match 857 */
-@media screen and (800px < width < 900px) and (orientation: landscape) {
+@media screen and (800px <=width < 900px) and (orientation: landscape) {
 	body {
 		@if($developmentMode==1) {
 			background-color: rgb(10, 64, 10);
@@ -202,7 +202,7 @@ footer {
 }
 
 /* Match 962 */
-@media screen and (900px < width < 1300px) and (orientation: landscape) {
+@media screen and (900px <=width < 1300px) and (orientation: landscape) {
 	body {
 		@if($developmentMode==1) {
 			background-color: rgb(9, 22, 62);
@@ -222,7 +222,7 @@ footer {
 }
 
 /* Match 1366 */
-@media screen and (1300px < width < 1400px) and (orientation: landscape) {
+@media screen and (1300px <=width < 1400px) and (orientation: landscape) {
 	body {
 		@if($developmentMode==1) {
 			background-color: rgb(57, 57, 8);
@@ -240,7 +240,7 @@ footer {
 	}
 }
 
-@media screen and (1400px < width < 1600px) and (orientation: landscape) {
+@media screen and (1400px <=width < 1600px) and (orientation: landscape) {
 	body {
 		@if($developmentMode==1) {
 			background-color: rgb(48, 84, 85);
@@ -275,4 +275,3 @@ footer {
 		font-size: 15px;
 	}
 }
-

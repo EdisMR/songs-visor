@@ -92,7 +92,7 @@ hr {
 	}
 }
 
-@media screen and (600px < width < 650px) and (orientation: portrait) {
+@media screen and (600px <= width < 650px) and (orientation: portrait) {
 	pre {
 		padding: 8px 5px;
 	}
