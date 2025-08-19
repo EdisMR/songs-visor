@@ -1,4 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment.development';
 import { CategoryInterface } from '../interface/category-interface';
 import { JsonFileInterface } from '../interface/json-file-interface';
 import { SongInterface } from '../interface/song-interface';
@@ -6,12 +9,13 @@ import { DbCategoriesService } from './db-categories.service';
 import { DbSongsService } from './db-songs.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CommonService {
   constructor(
     private _dbSongsSvc: DbSongsService,
     private _dbCategoriesSvc: DbCategoriesService,
+    private readonly _http: HttpClient
   ) {
   }
 
@@ -89,5 +93,19 @@ export class CommonService {
         .then(() => resolve())
         .catch(reject);
     });
+  }
+
+  verifyDatabaseFileVersion(): Observable<any> {
+    const urlBase: string = environment.baseUrl;
+    const fileName: string = environment.hashSongsFile;
+    console.log("verifyDatabaseFileVersion", urlBase, fileName)
+    return this._http.get(`${urlBase}${fileName}`)
+  }
+
+  importDatabaseFromUrl(): Observable<JsonFileInterface> {
+    const urlBase: string = environment.baseUrl;
+    const fileName: string = environment.songsFile;
+    console.log("importDatabaseFromUrl", urlBase, fileName)
+    return this._http.get<JsonFileInterface>(`${urlBase}${fileName}`, { responseType: 'json' });
   }
 }
