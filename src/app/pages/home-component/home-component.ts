@@ -26,12 +26,7 @@ export class HomeComponent implements OnDestroy {
       this._commonSvc.importDatabaseFromServedUrl().subscribe((songsDb: JsonFileInterface) => {
         this._commonSvc.importDatabaseFromJSONData(songsDb).then(e => {
           sessionStorage.setItem(this.SSVERIFICATIONNAME, '1')
-          Promise.all([
-            this._songsSvc.openDatabase(),
-            this._categoriesSvc.openDatabase()
-          ]).finally(() => {
-            this.getSongsAndCategories()
-          })
+          this.getSongsAndCategories()
         })
       })
     } else {
@@ -122,14 +117,21 @@ export class HomeComponent implements OnDestroy {
     this.counterBehaviour.next(event.target.value.toLowerCase())
   }
 
-
+  public categoryFiltered: string = 'all'
+  private loadingData: boolean = false
   public filterByCategory(categoryId: string) {
+    if (this.loadingData) {
+      return
+    }
+    this.categoryFiltered = categoryId
+    this.loadingData = true
     this._songsSvc.getAllSongs().then(songs => {
       this.songs = []
       if (categoryId == 'all') {
         this.songs = songs
         this.sortItems()
         this._cd.markForCheck()
+        this.loadingData = false
         return
       }
       songs.forEach(song => {
@@ -139,6 +141,7 @@ export class HomeComponent implements OnDestroy {
         }
       })
       this.sortItems()
+      this.loadingData = false
       this._cd.markForCheck()
     })
   }

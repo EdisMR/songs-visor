@@ -15,9 +15,13 @@
 		<fieldset>
 			<legend>Filtrar categorías</legend>
 			<div class="flex wrap" id="categories-list-container">
-				<span class="category-chip fg-accent p-.25 m-.5" (click)="filterByCategory('all')">Mostrar todo</span>
+				<span
+					[ngClass]="{'selected-category':categoryFiltered == 'all','category-chip':true,'p-.25':true,'m-.5':true}"
+					(click)="filterByCategory('all')">Mostrar todo</span>
 				@for(category of categories; track category.uniqueId){
-				<span class="category-chip fg-accent p-.25 m-.5" (click)="filterByCategory(category.uniqueId)">{{category.name}}</span>
+				<span
+					[ngClass]="{'selected-category':categoryFiltered == category.uniqueId,'category-chip':true,'p-.25':true,'m-.5':true}"
+					(click)="filterByCategory(category.uniqueId)">{{category.name}}</span>
 				}
 			</div>
 		</fieldset>
@@ -29,10 +33,8 @@
 		<li>No hay resultados</li>
 		}
 		@for(song of songs; track song.uniqueId){
-		<li>
-			<a [routerLink]="['','song', song.shortId]">
-				{{song.shortId}} - {{song.name}}
-			</a>
+		<li [routerLink]="['','song', song.shortId]">
+			{{song.shortId}} - {{song.name}}
 		</li>
 		}
 	</ul>

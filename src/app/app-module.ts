@@ -29,7 +29,7 @@ import { ProcessedSongTextPipe } from './pipes/processed-song-text-pipe';
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideHttpClient()
+    provideHttpClient(),
   ],
   bootstrap: [App]
 })

@@ -58,17 +58,23 @@ export class CommonService {
 
   importDatabaseFromJSONData(jsonData: JsonFileInterface): Promise<void> {
     return new Promise((resolve, reject) => {
-      if (!jsonData || !jsonData.songs || !jsonData.categories) {
-        reject(new Error('Invalid JSON data'));
-        return;
-      }
-      this._dbCategoriesSvc.clearCategories()
-        .then(() => this._dbSongsSvc.clearSongs())
-        .then(() => this._dbCategoriesSvc.importMultipleCategories(jsonData.categories))
-        .then(() => this._dbSongsSvc.importMultipleSongs(jsonData.songs))
-        .then(() => resolve())
-        .catch(reject);
-    });
+      /* open DB */
+      Promise.all([
+        this._dbSongsSvc.openDatabase(),
+        this._dbCategoriesSvc.openDatabase()
+      ]).finally(() => {
+        if (!jsonData || !jsonData.songs || !jsonData.categories) {
+          reject(new Error('Invalid JSON data'));
+          return;
+        }
+        this._dbCategoriesSvc.clearCategories()
+          .then(() => this._dbSongsSvc.clearSongs())
+          .then(() => this._dbCategoriesSvc.importMultipleCategories(jsonData.categories))
+          .then(() => this._dbSongsSvc.importMultipleSongs(jsonData.songs))
+          .then(() => resolve())
+          .catch(reject);
+      })
+    })
   }
 
   importDatabaseFromServedUrl(): Observable<JsonFileInterface> {

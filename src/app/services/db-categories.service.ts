@@ -62,7 +62,6 @@ export class DbCategoriesService {
 
       request.onsuccess = () => {
         console.log('Category added successfully:', categoryData);
-        window.alert('Categoría añadida correctamente');
         resolve(categoryData);
       };
 
@@ -86,6 +85,7 @@ export class DbCategoriesService {
       const request = store.get(uniqueId);
 
       request.onsuccess = () => {
+        console.log('Category retrieved successfully:', request.result);
         resolve(request.result as CategoryInterface);
       };
 
@@ -133,7 +133,7 @@ export class DbCategoriesService {
       const request = store.put(category);
 
       request.onsuccess = () => {
-        window.alert('Categoría actualizada correctamente');
+        console.log('Category updated successfully:', category);
         resolve();
       };
 
@@ -157,7 +157,7 @@ export class DbCategoriesService {
       const request = store.delete(uniqueId);
 
       request.onsuccess = () => {
-        window.alert('Categoría eliminada correctamente');
+        console.log('Category deleted successfully:', uniqueId);
         resolve();
       };
 
@@ -181,7 +181,7 @@ export class DbCategoriesService {
       const request = store.clear();
 
       request.onsuccess = () => {
-        window.alert('Todas las categorías han sido eliminadas correctamente');
+        console.log('Categories cleared successfully');
         resolve();
       };
 
@@ -213,6 +213,7 @@ export class DbCategoriesService {
 
       Promise.all(promises)
         .then(() => {
+          console.log('Categories imported successfully');
           window.alert('Categorías importadas correctamente');
           resolve();
         })

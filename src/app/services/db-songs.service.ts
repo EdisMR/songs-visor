@@ -70,7 +70,6 @@ export class DbSongsService {
 
       request.onsuccess = () => {
         console.log('Song added successfully:', song);
-        window.alert('Canto añadido correctamente');
         resolve(song);
       };
 
@@ -193,7 +192,6 @@ export class DbSongsService {
 
       request.onsuccess = () => {
         console.log('Song deleted successfully:', id);
-        window.alert('Canto eliminado correctamente');
         resolve();
       };
 
@@ -218,7 +216,6 @@ export class DbSongsService {
 
       request.onsuccess = () => {
         console.log('Songs cleared successfully');
-        window.alert('Todos los cantos han sido eliminados');
         resolve();
       };
 
