@@ -69,13 +69,16 @@ export class SongComponent implements OnDestroy {
       if (this.songId) {
         this.rawSong = songs.find(song => song.shortId === this.songId) || {} as SongInterface
         this.relatedLinksProcessed = this.rawSong.relatedLinks.split(',') || []
-        this._cd.markForCheck();
+        if(this.relatedLinksProcessed.length == 1 && this.relatedLinksProcessed[0] == ''){
+          this.relatedLinksProcessed = []
+        }
         if (!this.rawSong.name) {
           this._Router.navigate([''])
         }
       } else {
         this._Router.navigate([''])
       }
+      this._cd.markForCheck();
     })
   }
 

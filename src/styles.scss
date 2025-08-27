@@ -30,7 +30,7 @@ footer {
 /* *************************************************************** */
 /* *************************************************************** */
 
-@media screen and (max-width:310px) and (orientation: portrait) {
+@media screen and (max-width:305px) and (orientation: portrait) {
 	body {
 		@if($developmentMode==1) {
 			background-color: rgb(52, 8, 8);
@@ -51,7 +51,7 @@ footer {
 }
 
 /* Match 384 */
-@media screen and (310px <=width < 510px) and (orientation: portrait) {
+@media screen and (305px <=width < 505px) and (orientation: portrait) {
 	body {
 		@if($developmentMode==1) {
 			background-color: rgb(35, 64, 55);
@@ -72,7 +72,7 @@ footer {
 }
 
 /* Match 601 */
-@media screen and (510px <=width < 710px) and (orientation: portrait) {
+@media screen and (505px <=width < 705px) and (orientation: portrait) {
 	body {
 		@if($developmentMode==1) {
 			background-color: rgb(3, 64, 3);
@@ -93,7 +93,7 @@ footer {
 }
 
 /* Match 768 and 1024 */
-@media screen and (710px <=width < 910px) and (orientation: portrait) {
+@media screen and (705px <=width < 905px) and (orientation: portrait) {
 	body {
 		@if($developmentMode==1) {
 			background-color: rgb(97, 104, 124);
@@ -114,7 +114,7 @@ footer {
 }
 
 /* Match 768 and 1024 */
-@media screen and (910px <=width < 1210px) and (orientation: portrait) {
+@media screen and (905px <=width < 1205px) and (orientation: portrait) {
 	body {
 		@if($developmentMode==1) {
 			background-color: rgb(9, 22, 62);
@@ -134,7 +134,7 @@ footer {
 	}
 }
 
-@media screen and (min-width:1210px) and (orientation: portrait) {
+@media screen and (min-width:1205px) and (orientation: portrait) {
 	body {
 		@if($developmentMode==1) {
 			background-color: rgb(49, 49, 49);
@@ -160,7 +160,7 @@ footer {
 /* *************************************************************** */
 /* *************************************************************** */
 
-@media screen and (max-width:810px) and (orientation: landscape) {
+@media screen and (max-width:805px) and (orientation: landscape) {
 	body {
 		@if($developmentMode==1) {
 			background-color: rgb(52, 8, 8);
@@ -181,7 +181,7 @@ footer {
 }
 
 /* Match 857 */
-@media screen and (810px <=width < 910px) and (orientation: landscape) {
+@media screen and (805px <=width < 905px) and (orientation: landscape) {
 	body {
 		@if($developmentMode==1) {
 			background-color: rgb(10, 64, 10);
@@ -202,7 +202,7 @@ footer {
 }
 
 /* Match 962 */
-@media screen and (910px <=width < 1310px) and (orientation: landscape) {
+@media screen and (905px <=width < 1305px) and (orientation: landscape) {
 	body {
 		@if($developmentMode==1) {
 			background-color: rgb(9, 22, 62);
@@ -222,7 +222,7 @@ footer {
 }
 
 /* Match 1366 */
-@media screen and (1310px <=width < 1410px) and (orientation: landscape) {
+@media screen and (1305px <=width < 1405px) and (orientation: landscape) {
 	body {
 		@if($developmentMode==1) {
 			background-color: rgb(57, 57, 8);
@@ -240,7 +240,7 @@ footer {
 	}
 }
 
-@media screen and (1410px <=width < 1610px) and (orientation: landscape) {
+@media screen and (1405px <=width < 1605px) and (orientation: landscape) {
 	body {
 		@if($developmentMode==1) {
 			background-color: rgb(48, 84, 85);
@@ -258,7 +258,7 @@ footer {
 	}
 }
 
-@media screen and (min-width:1610px) and (orientation: landscape) {
+@media screen and (min-width:1605px) and (orientation: landscape) {
 	body {
 		@if($developmentMode==1) {
 			background-color: rgb(48, 84, 85);

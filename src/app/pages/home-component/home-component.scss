@@ -9,6 +9,8 @@
 }
 
 #filteredSongsListContainer li {
+	display: inline-block;
+	list-style-type: none;
 	padding: 2px 5px;
 	border-radius: 20px;
 	margin-top: 7px;
@@ -41,7 +43,6 @@
 .selected-category {
 	border: 2px solid rgb(255, 255, 255) !important;
 	background-image: linear-gradient(45deg, #3070c4ce, #3070c4ce, #86cfff);
-	
 }
 
 .btn-db-actions {
