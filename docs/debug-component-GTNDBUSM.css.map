@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/pages/debug-component/debug-component.scss"],
+  "sourcesContent": ["h1 {\r\n\tfont-size: 17px;\r\n}\r\n\r\n#debugInfo {\r\n\tfont-size: 12px;\r\n\twhite-space: pre-wrap;\r\n\tfont-family: \"Martian Mono\", monospace;\r\n\tcolor: #5abdeb;\r\n}\r\n\r\npre {\r\n\tuser-select: text;\r\n}"],
+  "mappings": "AAAA,GACC,UAAA,KAGD,CAAA,UACC,UAAA,KACA,YAAA,SACA,YAAA,YAAA,CAAA,UACA,MAAA,QAGD,IACC,oBAAA,KAAA,YAAA",
+  "names": []
+}
