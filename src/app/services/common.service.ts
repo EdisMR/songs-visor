@@ -58,7 +58,6 @@ export class CommonService {
 
   importDatabaseFromJSONData(jsonData: JsonFileInterface): Promise<void> {
     return new Promise((resolve, reject) => {
-      /* open DB */
       Promise.all([
         this._dbSongsSvc.openDatabase(),
         this._dbCategoriesSvc.openDatabase()

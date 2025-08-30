@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { CategoryInterface } from '../interface/category-interface';
+import { AlertifySvc } from './alertify';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DbCategoriesService {
   constructor(
+    private readonly _alert: AlertifySvc
   ) {
     this.openDatabase();
   }
@@ -35,7 +37,7 @@ export class DbCategoriesService {
 
       request.onerror = (event: Event) => {
         console.error('Database error:', (event.target as IDBOpenDBRequest).error);
-        window.alert('Error al abrir la base de datos de categorías');
+        this._alert.error('Error al abrir la base de datos de categorías');
         this.db = null;
         reject((event.target as IDBOpenDBRequest).error);
       };
@@ -67,7 +69,7 @@ export class DbCategoriesService {
 
       request.onerror = (event: Event) => {
         console.error('Error adding category:', (event.target as IDBRequest).error);
-        window.alert('Error al añadir la categoría');
+        this._alert.error('Error al añadir la categoría');
         reject((event.target as IDBRequest).error);
       };
     });
@@ -91,7 +93,7 @@ export class DbCategoriesService {
 
       request.onerror = (event: Event) => {
         console.error('Error retrieving category:', (event.target as IDBRequest).error);
-        window.alert('Error al recuperar la categoría');
+        this._alert.error('Error al recuperar la categoría');
         reject((event.target as IDBRequest).error);
       };
     });
@@ -115,7 +117,7 @@ export class DbCategoriesService {
 
       request.onerror = (event: Event) => {
         console.error('Error retrieving categories:', (event.target as IDBRequest).error);
-        window.alert('Error al recuperar las categorías');
+        this._alert.error('Error al recuperar las categorías');
         reject((event.target as IDBRequest).error);
       };
     });
@@ -139,7 +141,7 @@ export class DbCategoriesService {
 
       request.onerror = (event: Event) => {
         console.error('⚠️ Error updating category:', (event.target as IDBRequest).error);
-        window.alert('Error al actualizar la categoría');
+        this._alert.error('Error al actualizar la categoría');
         reject((event.target as IDBRequest).error);
       };
     });
@@ -163,7 +165,7 @@ export class DbCategoriesService {
 
       request.onerror = (event: Event) => {
         console.error('⚠️ Error deleting category:', (event.target as IDBRequest).error);
-        window.alert('Error al eliminar la categoría');
+        this._alert.error('Error al eliminar la categoría');
         reject((event.target as IDBRequest).error);
       };
     });
@@ -187,7 +189,7 @@ export class DbCategoriesService {
 
       request.onerror = (event: Event) => {
         console.error('Error clearing categories:', (event.target as IDBRequest).error);
-        window.alert('Error al eliminar todas las categorías');
+        this._alert.error('Error al eliminar todas las categorías');
         reject((event.target as IDBRequest).error);
       };
     });
@@ -214,12 +216,12 @@ export class DbCategoriesService {
       Promise.all(promises)
         .then(() => {
           console.log('Categories imported successfully');
-          window.alert('Categorías importadas correctamente');
+          this._alert.success('Categorías importadas correctamente');
           resolve();
         })
         .catch(error => {
           console.error('Error importing categories:', error);
-          window.alert('Error al importar las categorías');
+          this._alert.error('Error al importar las categorías');
           reject(error);
         });
     });

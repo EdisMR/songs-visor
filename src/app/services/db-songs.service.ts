@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { SongInterface } from '../interface/song-interface';
+import { AlertifySvc } from './alertify';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DbSongsService {
   constructor(
+    private readonly _alert: AlertifySvc
   ) {
     this.openDatabase();
   }
@@ -37,7 +39,7 @@ export class DbSongsService {
 
       request.onerror = (event: Event) => {
         console.error('⚠️ Database error:', (event.target as IDBOpenDBRequest).error);
-        window.alert('Error al abrir la base de datos de cantos');
+        this._alert.error('Error al abrir la base de datos de cantos');
         this.db = null;
         reject((event.target as IDBOpenDBRequest).error);
       };
@@ -75,7 +77,7 @@ export class DbSongsService {
 
       request.onerror = (event: Event) => {
         console.error('⚠️ Error adding song:', (event.target as IDBRequest).error);
-        window.alert('Error al añadir el canto');
+        this._alert.error('Error al añadir el canto');
         reject((event.target as IDBRequest).error);
       };
     });
@@ -101,7 +103,7 @@ export class DbSongsService {
 
       request.onerror = (event: Event) => {
         console.error('⚠️ Error retrieving song:', (event.target as IDBRequest).error);
-        window.alert('Error al recuperar el canto');
+        this._alert.error('Error al recuperar el canto');
         reject((event.target as IDBRequest).error);
       };
     });
@@ -125,7 +127,7 @@ export class DbSongsService {
 
       request.onerror = (event: Event) => {
         console.error('⚠️ Error retrieving song:', (event.target as IDBRequest).error);
-        window.alert('Error al recuperar el canto');
+        this._alert.error('Error al recuperar el canto');
         reject((event.target as IDBRequest).error);
       };
     });
@@ -149,7 +151,7 @@ export class DbSongsService {
 
       request.onerror = (event: Event) => {
         console.error('⚠️ Error retrieving all songs:', (event.target as IDBRequest).error);
-        window.alert('Error al recuperar todos los cantos');
+        this._alert.error('Error al recuperar todos los cantos');
         reject((event.target as IDBRequest).error);
       };
     });
@@ -173,7 +175,7 @@ export class DbSongsService {
 
       request.onerror = (event: Event) => {
         console.error('⚠️ Error updating song:', (event.target as IDBRequest).error);
-        window.alert('Error al actualizar el canto');
+        this._alert.error('Error al actualizar el canto');
         reject((event.target as IDBRequest).error);
       };
     });
@@ -197,7 +199,7 @@ export class DbSongsService {
 
       request.onerror = (event: Event) => {
         console.error('⚠️ Error deleting song:', (event.target as IDBRequest).error);
-        window.alert('Error al eliminar el canto');
+        this._alert.error('Error al eliminar el canto');
         reject((event.target as IDBRequest).error);
       };
     });
@@ -221,7 +223,7 @@ export class DbSongsService {
 
       request.onerror = (event: Event) => {
         console.error('⚠️ Error clearing songs:', (event.target as IDBRequest).error);
-        window.alert('Error al eliminar todos los cantos');
+        this._alert.error('Error al eliminar todos los cantos');
         reject((event.target as IDBRequest).error);
       };
     });
@@ -248,12 +250,12 @@ export class DbSongsService {
       Promise.all(promises)
         .then(() => {
           console.log('Songs imported successfully');
-          window.alert('Cantos importados correctamente');
+          this._alert.success('Cantos importados correctamente');
           resolve();
         })
         .catch(error => {
           console.error('⚠️ Error importing songs:', error);
-          window.alert('Error al importar los cantos');
+          this._alert.error('Error al importar los cantos');
           reject(error);
         });
     });
